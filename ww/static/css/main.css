@@ -1,0 +1,8 @@
+.list{
+    list-style: none;
+}
+
+.list > li{
+    float: left;
+    margin : 30px;
+}
