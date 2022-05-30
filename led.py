@@ -1,18 +1,13 @@
 import RPi.GPIO as GPIO
 from time import sleep
+
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(21,GPIO.OUT)
-pwm = GPIO.PWM(21, 3000)
-pwm.start(0)
-duty = 0
+GPIO.setup(20,GPIO.OUT)
 try:
     while True:
-        pwm.ChangeDutyCycle(duty)
-        duty = 100
-        sleep(0.5)
-        print(duty)
-        if(duty == 100):
-            duty=0
+        GPIO.output(20,True)
+        sleep(5)
+        GPIO.output(20,False)
+        sleep(5)
 except KeyboardInterrupt:
     GPIO.cleanup()
-    pwm.stop()
