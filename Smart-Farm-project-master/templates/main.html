@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+</head>
+<body>
+    <ul class = "list">
+        <li>
+            <label> 온도 </label>
+            <progress value="{{data[3]}}" max="50"></progress>
+            <p>{{data[3]}}</p>
+        </li>
+        <li>
+            <label> 습도 </label>
+            <progress value="{{data[2]}}" max="100"></progress>
+            <p>{{data[2]}}</p>
+        </li>
+        <li>
+            <label> 물 높이 </label>
+            <progress value="{{data[0]}}" max="100"></progress>
+            <p>{{data[0]}}</p>
+        </li>
+        <li>
+            <label>토양 수분</label>
+            <progress value="{{data[1]}}" max="100"></progress>
+            <p>{{data[1]}}</p>
+        </li>
+    </ul>
+    <div class = "btnDiv">
+        <button onclick="fanOn()">Fan ON</button>
+        <button onclick="fanOff()">Fan OFF</button>
+    </div>
+    <script>
+        function fanOn() {
+            fetch("/fan/on")
+                .then(response => response.text())
+                .then(data => {alert(data)}
+                );
+        }
+
+        function fanOff() {
+            fetch("/fan/off")
+                .then(response => response.text())
+                .then(data => {alert(data)}
+                );
+        }
+    </script>
+</body>

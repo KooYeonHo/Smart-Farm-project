@@ -1,0 +1,23 @@
+body{
+    font-size: 20px;
+}
+
+.list, .btnDiv{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.list > li{
+    float: left;
+    margin : 30px;
+}
+
+.list > li > p{
+    text-align: center;
+}
+
+.btnDiv > button{
+    margin: 30px;
+}
