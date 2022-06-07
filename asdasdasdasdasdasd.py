@@ -1,4 +1,4 @@
-import Adafruit_DHT as dht
+##import Adafruit_DHT as dht
 from time import sleep
 from flask import Flask, render_template, request
 import sqlite3 as sql
