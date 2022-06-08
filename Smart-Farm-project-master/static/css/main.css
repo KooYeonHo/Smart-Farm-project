@@ -2,6 +2,10 @@ body{
     font-size: 20px;
 }
 
+h1{
+    text-align: center;
+}
+
 .list, .btnDiv{
     display: flex;
     list-style: none;
@@ -9,12 +13,19 @@ body{
     justify-content: center;
 }
 
+.btnDiv > button{
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+}
+
 .list > li{
     float: left;
-    margin : 30px;
+    margin : 50px;
 }
 
 .list > li > p{
+    width: 100%;
     text-align: center;
 }
 

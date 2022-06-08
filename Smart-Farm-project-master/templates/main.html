@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
 </head>
 <body>
+    <h1>데이터를 가져온 시간 {{data[4]}}</h1>
     <ul class = "list">
         <li>
-            <label> 온도 </label>
+            <p> 온도 </p>
             <progress value="{{data[3]}}" max="50"></progress>
             <p>{{data[3]}}</p>
         </li>
         <li>
-            <label> 습도 </label>
+            <p> 습도 </p>
             <progress value="{{data[2]}}" max="100"></progress>
             <p>{{data[2]}}</p>
         </li>
         <li>
-            <label> 물 높이 </label>
+            <p> 물 높이 </p>
             <progress value="{{data[0]}}" max="100"></progress>
             <p>{{data[0]}}</p>
         </li>
         <li>
-            <label>토양 수분</label>
+            <p>토양 수분</p>
             <progress value="{{data[1]}}" max="100"></progress>
             <p>{{data[1]}}</p>
         </li>
@@ -33,15 +37,33 @@
         function fanOn() {
             fetch("/fan/on")
                 .then(response => response.text())
-                .then(data => {alert(data)}
+                .then(data => {
+                    if(data === "OK"){
+                        alert("FAN이 가동되었습니다.");
+                    }
+                    else{
+                        alert("ERROR");
+                    }
+                }
                 );
         }
 
         function fanOff() {
             fetch("/fan/off")
                 .then(response => response.text())
-                .then(data => {alert(data)}
+                .then(data => {
+                    if(data === "OK"){
+                        alert("FAN이 중지되었습니다.");
+                    }
+                    else{
+                        alert("ERROR");
+                    }
+                }
                 );
         }
+        while(true){
+            setTimeout(window.location.reload(), 100);
+        }
+
     </script>
 </body>
