@@ -1,4 +1,4 @@
-import spidev
+cdimport spidev
 import RPi.GPIO as GPIO
 import sqlite3
 from time import sleep
@@ -30,12 +30,19 @@ def fan_on():
 def fan_off():
   GPIO.output(19,False)
   GPIO.output(13,False)
-
+  
+def led_on():
+  GPIO.output(20,True)
+  
+def led_off():
+  GPIO.output(20,False)
+  
 def settings():
   GPIO.setwarnings(False)
   db.setDatabase()
   GPIO.setmode(GPIO.BCM)
-  #수중펌프 핀번호 = 6,  환기구 핀번호 = 19,13
+  #수중펌프 핀번호 = 6,  환기구 핀번호 = 19,13  led 핀번호 = 20
+  GPIO.setup(20,GPIO.OUT)
   GPIO.setup(19,GPIO.OUT)
   GPIO.setup(6,GPIO.OUT)
   GPIO.setup(13,GPIO.OUT)
