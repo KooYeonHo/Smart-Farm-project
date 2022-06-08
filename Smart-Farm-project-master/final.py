@@ -1,4 +1,4 @@
-import spidev
+cdimport spidev
 import RPi.GPIO as GPIO
 import sqlite3
 from time import sleep
