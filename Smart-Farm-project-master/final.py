@@ -53,14 +53,8 @@ def settings():
   groundSpi.mode = 3
   groundSpi.max_speed_hz = 1000000
   GROUND_WATER_CHANNEL = 1
-  fan_off()
-  while True:
-    ground_voltage = readAnalog(groundSpi, GROUND_WATER_CHANNEL)
-    water_voltage = readAnalog(waterSpi, WATER_CHANNEL)
-    ground_percent = 100 - round(ground_voltage,2)
-    water_percent = round(water_voltage,2)
-    db.insertData(water_percent, ground_percent, 0, 0)
     
     
 if __name__ == "__main__":
     settings()
+    fan_on()
