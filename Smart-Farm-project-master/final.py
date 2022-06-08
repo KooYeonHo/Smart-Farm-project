@@ -3,7 +3,21 @@ import RPi.GPIO as GPIO
 import sqlite3
 from time import sleep
 import db
+import threading
 
+class fanThread(threading.Thread):
+    
+    def __init__(self, time):
+        super().__init__()
+        self.time = time
+    
+    def run(self):
+        while True:
+            fan_on()
+            sleep(self.time)
+            fan_off()
+            
+        
 def readAnalog(spi, channel):
   r = spi.xfer2([1, (8 + channel) << 4, 0])
   adc_out = ((r[1]&3) << 8) + r[2]
@@ -18,6 +32,7 @@ def fan_off():
   GPIO.output(13,False)
 
 def settings():
+  GPIO.setwarnings(False)
   db.setDatabase()
   GPIO.setmode(GPIO.BCM)
   #수중펌프 핀번호 = 6,  환기구 핀번호 = 19,13
@@ -38,13 +53,14 @@ def settings():
   groundSpi.mode = 3
   groundSpi.max_speed_hz = 1000000
   GROUND_WATER_CHANNEL = 1
-
+  fan_off()
   while True:
     ground_voltage = readAnalog(groundSpi, GROUND_WATER_CHANNEL)
     water_voltage = readAnalog(waterSpi, WATER_CHANNEL)
     ground_percent = 100 - round(ground_voltage,2)
     water_percent = round(water_voltage,2)
-    db.insertData(water_percent, ground_percent, 0, 0) 
-    sleep(1)
+    db.insertData(water_percent, ground_percent, 0, 0)
     
-
+    
+if __name__ == "__main__":
+    settings()

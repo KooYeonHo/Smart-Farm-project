@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 body{
     font-size: 20px;
 }
@@ -7,11 +11,15 @@ h1{
 }
 
 .list, .btnDiv{
+    width : 1920px;
     display: flex;
     list-style: none;
     align-items: center;
     justify-content: center;
 }
+
+.btnDiv{
+    clear:both;
 
 .btnDiv > button{
     cursor: pointer;
