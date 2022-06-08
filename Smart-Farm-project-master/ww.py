@@ -9,6 +9,22 @@ def toIndex():
     data = db.getLastData()
     return render_template("main.html", data=data)
 
+@app.route("/led/on")
+def led_on():
+	try:
+		# final.led_on()
+		return "OK"
+	except:
+		return "FAIL"
+
+@app.route("/led/off")
+def led_off():
+	try:
+		# final.led_off()
+		return "OK"
+	except:
+		return "FAIL"
+
 @app.route("/fan/on")
 def fan_on():
 	try:

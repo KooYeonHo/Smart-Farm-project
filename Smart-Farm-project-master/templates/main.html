@@ -33,6 +33,10 @@
         <button onclick="fanOn()">Fan ON</button>
         <button onclick="fanOff()">Fan OFF</button>
     </div>
+    <div class = "btnDiv">
+        <button onclick="ledOn()">LED ON</button>
+        <button onclick="ledOff()">LED OFF</button>
+    </div>
     <script>
         function fanOn() {
             fetch("/fan/on")
@@ -61,9 +65,32 @@
                 }
                 );
         }
-        while(true){
-            setTimeout(window.location.reload(), 100);
-        }
 
+        function ledOn() {
+            fetch("/led/on")
+                .then(response => response.text())
+                .then(data => {
+                    if(data === "OK"){
+                        alert("LED가 가동되었습니다.");
+                    }
+                    else{
+                        alert("ERROR");
+                    }
+                }
+                );
+        }
+        function ledOff() {
+            fetch("/led/off")
+                .then(response => response.text())
+                .then(data => {
+                    if(data === "OK"){
+                        alert("LED가 중지되었습니다.");
+                    }
+                    else{
+                        alert("ERROR");
+                    }
+                }
+                );
+        }
     </script>
 </body>
