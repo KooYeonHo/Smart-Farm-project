@@ -2,6 +2,8 @@
 
 ![image](https://github.com/user-attachments/assets/787f7d1d-0900-4879-880b-f13f2d4ba653)
 
+![캡처](https://github.com/user-attachments/assets/98d5f606-b819-4b76-835d-1e44e8d2da3c)
+
 
 <br />
 
